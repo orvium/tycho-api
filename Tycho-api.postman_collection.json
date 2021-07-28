@@ -1,0 +1,372 @@
+{
+	"info": {
+		"_postman_id": "eb4aca31-a449-4fa2-a7e0-f08dd17ad355",
+		"name": "Tycho-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "donor",
+			"item": [
+				{
+					"name": "Get All Donors",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/donor",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"donor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get One Donor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/donor/61142790ce8ed0367cb4525e",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"donor",
+								"61142790ce8ed0367cb4525e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post Create donor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Name #2\",\r\n    \"surname\": \"Surname #2\",\r\n    \"email\": \"donor2@gmail.com\",\r\n    \"password\": \"222\",\r\n    \"role\": \"donor\",\r\n    \"calls\": [],\r\n    \"institution\": \"institution #2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/donor",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"donor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Patch Donor",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"calls\": \"611cbeaf8526f1398801b0c1\" }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/donor/611428ab1d9f024edcec29ce",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"donor",
+								"611428ab1d9f024edcec29ce"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Donor",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/donor/61142790ce8ed0367cb4525e",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"donor",
+								"61142790ce8ed0367cb4525e"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "consumer",
+			"item": [
+				{
+					"name": "Get all consumers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/consumer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"consumer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get one consumer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/consumer/61142790ce8ed0367cb4525e",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"consumer",
+								"61142790ce8ed0367cb4525e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post create consumer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"consumer #2\",\r\n  \"role\": \"consumer\",\r\n  \"email\": \"222\",\r\n  \"password\": \"222\",\r\n  \"isPrivate\": false,\r\n  \"type\": \"type 2\",\r\n  \"location\": \"location 2\",\r\n  \"website\": \"website 2\",\r\n  \"department\": \"department 2\",\r\n  \"description\": \"description 2\",\r\n  \"calls\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/consumer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"consumer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Patch consumer",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"calls\": \"611cf281942a1626c4e7dd78\" }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/consumer/611a8c5b4c51051728150444",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"consumer",
+								"611a8c5b4c51051728150444"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete consumer",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/consumer/611a8b2d4c5105172815043e",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"consumer",
+								"611a8b2d4c5105172815043e"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "call",
+			"item": [
+				{
+					"name": "Get all calls",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/call",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"call"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get one call",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/call/61142790ce8ed0367cb4525e",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"call",
+								"61142790ce8ed0367cb4525e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post create call",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"date\": null,\r\n  \"title\": \"Call #1\",\r\n  \"description\": \"description #1\",\r\n  \"donors\": [ \"611428ab1d9f024edcec29ce\" ],\r\n  \"consumers\": [ \"611a8c5b4c51051728150444\" ],\r\n\r\n  \"institution\": {\r\n    \"name\": \"institution #1\",\r\n    \"isPrivate\": false,\r\n    \"type\": \"type #1\",\r\n    \"location\": \"location #1\",\r\n    \"website\": \"website #1\",\r\n    \"department\": \"department #1\",\r\n    \"description\": \"description #1\"\r\n  },\r\n  \"contactPerson\": {\r\n    \"name\": \"name\",\r\n    \"surname\": \"surname\",\r\n    \"email\": \"email\"\r\n  },\r\n  \"data\": {\r\n    \"license\": \"license\",\r\n    \"thirdParties\": \"thirdParties\",\r\n    \"dataTemplate\": \"dataTemplate\",\r\n    \"personalInformation\": \"personalInformation\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/call",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"call"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Patch call",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"donors\": [] }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/call/611cbeaf8526f1398801b0c1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"call",
+								"611cbeaf8526f1398801b0c1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete call",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/call/611fc44a32cd1530f405ddc1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"call",
+								"611fc44a32cd1530f405ddc1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
