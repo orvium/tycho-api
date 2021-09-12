@@ -9,6 +9,12 @@ Tycho API - Built with [Nest](https://github.com/nestjs/nest) framework.
 $ npm install
 ```
 
+You also need a mongodb instance available to persist data:
+
+```
+docker run -d -p 27017:27017 --name tycho-mongo -v mongovol:/data/db mongo:4.2.5
+```
+
 ## Initialize db script
 
 ```bash
