@@ -1,8 +1,15 @@
 import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, Patch, Post } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
-import { CreateCallDto } from 'src/dtos/call/create-call.dto';
-import { UpdateCallDto } from 'src/dtos/call/update-call.dto';
+import { CreateCallDto } from '../../dtos/call/create-call.dto';
+import { UpdateCallDto } from '../../dtos/call/update-call.dto';
 import { CallService } from './call.service';
+
+class AppFile {
+  readonly lastModified!: number;
+  readonly name!: string;
+  readonly size!: number;
+  readonly type!: string;
+}
 
 @ApiTags('call')
 @Controller('call')
@@ -63,6 +70,25 @@ export class CallController {
    */
   @Delete(':id')
   delete(@Param('id') id: string) {
-    return this.callService.delete(id) ;
+    return this.callService.delete(id);
   }
+
+  /**
+   * Upload file
+   */
+  @Post(':id/file')
+  uploadFile(
+    @Param('id') id: string,
+    @Body() payload: { file: AppFile },
+  ): Promise<{ signedUrl: string }> {
+    return this.callService.uploadFile(id, payload);
+  }
+
+  /**
+   * Get call donors
+   */
+   @Get(':id/donors')
+   getCallDonors(@Param('id') id: string) {
+     return this.callService.getCallDonors(id);
+   }
 }

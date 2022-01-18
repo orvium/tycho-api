@@ -20,8 +20,14 @@ export class ContactPerson {
 export class Data {
   license: string;
   thirdParties: string;
-  dataTemplate: any;
+  dataTemplate: DataTemplate;
   personalInformation: string;
+}
+
+export class DataTemplate {
+  filename: string;
+  contentType: string;
+  contentLength: number;
 }
 
 @Schema()
@@ -32,8 +38,11 @@ export class Call extends Document {
   @Prop() institution: Institution;
   @Prop() contactPerson: ContactPerson;
   @Prop() data: Data;
+  @Prop() imageUrl: string;
+  @Prop() fileUrl: string;
   @Prop([String]) donors: string[];
   @Prop([String]) consumers: string[];
+  @Prop([String]) keywords: string[];
 }
 
 export const CallSchema = SchemaFactory.createForClass(Call);

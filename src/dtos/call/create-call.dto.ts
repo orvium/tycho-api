@@ -1,4 +1,4 @@
-import { ContactPerson, Data, Institution } from 'src/entities/call.entity';
+import { Institution, ContactPerson, Data } from '../../entities/call.entity';
 
 export class CreateCallDto {
   readonly date: Date;
@@ -7,6 +7,8 @@ export class CreateCallDto {
   readonly institution: Institution;
   readonly contactPerson: ContactPerson;
   readonly data: Data;
+  readonly imageUrl: string;
   readonly donors: string[] = [];
   readonly consumers: string[] = [];
+  readonly keywords: string[] = [];
 }

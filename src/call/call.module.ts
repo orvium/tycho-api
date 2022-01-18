@@ -1,8 +1,10 @@
 import { Module } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
-import { Call, CallSchema } from 'src/entities/call.entity';
-import { Consumer, ConsumerSchema } from 'src/entities/consumer.entity';
-import { Donor, DonorSchema } from 'src/entities/donor.entity';
+import { AwsStorageService } from '../common/aws-storage/aws-storage.service';
+import { Call, CallSchema } from '../entities/call.entity';
+import { Consumer, ConsumerSchema } from '../entities/consumer.entity';
+import { Donor, DonorSchema } from '../entities/donor.entity';
 import { CallController } from './call/call.controller';
 import { CallService } from './call/call.service';
 
@@ -24,6 +26,6 @@ import { CallService } from './call/call.service';
     ]),
   ],
   controllers: [CallController],
-  providers: [CallService]
+  providers: [CallService, AwsStorageService, ConfigService]
 })
 export class CallModule {}
