@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import { Consumer, ConsumerSchema } from 'src/entities/consumer.entity';
-import { Donor, DonorSchema } from 'src/entities/donor.entity';
+import { Consumer, ConsumerSchema } from '../entities/consumer.entity';
+import { Donor, DonorSchema } from '../entities/donor.entity';
 import { LoginController } from './login/login.controller';
 import { LoginService } from './login/login.service';
 

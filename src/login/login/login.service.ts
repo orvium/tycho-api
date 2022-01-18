@@ -1,10 +1,10 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { LoginDataDto } from 'src/dtos/login-data/login-data.dto';
-import { Consumer } from 'src/entities/consumer.entity';
-import { Donor } from 'src/entities/donor.entity';
-import { USER_ROLE } from 'src/entities/user.entity';
+import { LoginDataDto } from '../../dtos/login-data/login-data.dto';
+import { Consumer } from '../../entities/consumer.entity';
+import { Donor } from '../../entities/donor.entity';
+import { USER_ROLE } from '../../entities/user.entity';
 
 @Injectable()
 export class LoginService {
@@ -14,11 +14,11 @@ export class LoginService {
   ) {}
   
   async login(loginDto: LoginDataDto) {
-    let model = loginDto.role === USER_ROLE.consumer
+    const model = loginDto.role === USER_ROLE.consumer
       ? this.consumerModel
       : this.donorModel;
 
-    let user = await model.findOne(
+    const user = await model.findOne(
       { email: loginDto.email, password: loginDto.password }
     );
 
