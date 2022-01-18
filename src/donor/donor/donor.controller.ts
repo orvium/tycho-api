@@ -1,7 +1,7 @@
-import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, Patch, Post, Query } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
-import { CreateDonorDto } from 'src/dtos/donor/create-donor.dto';
-import { UpdateDonorDto } from 'src/dtos/donor/update-donor.dto';
+import { CreateDonorDto } from '../../dtos/donor/create-donor.dto';
+import { UpdateDonorDto } from '../../dtos/donor/update-donor.dto';
 import { DonorService } from './donor.service';
 
 @ApiTags('donor')
@@ -21,8 +21,11 @@ export class DonorController {
    * Get all calls without particular donor
    */
   @Get(':id/without-me')
-  getAllWithoutMe(@Param('id') donorId: string) {
-    return this.donorService.getAllWithoutMe(donorId);
+  getAllWithoutMe(
+    @Param('id') donorId: string,
+    @Query('query') query: string,
+  ) {
+    return this.donorService.getAllWithoutMe(donorId, query);
   }
 
   /**
@@ -37,8 +40,11 @@ export class DonorController {
    * Get donor's calls
    */
   @Get(':id/my-calls')
-  getMyCalls(@Param('id') donorId: string) {
-    return this.donorService.getMyCalls(donorId);
+  getMyCalls(
+    @Param('id') donorId: string,
+    @Query('query') query: string,
+  ) {
+    return this.donorService.getMyCalls(donorId, query);
   }
 
   /**

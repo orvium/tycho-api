@@ -1,7 +1,7 @@
-import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, Patch, Post, Query } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
-import { CreateConsumerDto } from 'src/dtos/consumer/create-consumer.dto';
-import { UpdateConsumerDto } from 'src/dtos/consumer/update-consumer.dto';
+import { CreateConsumerDto } from '../../dtos/consumer/create-consumer.dto';
+import { UpdateConsumerDto } from '../../dtos/consumer/update-consumer.dto';
 import { ConsumerService } from './consumer.service';
 
 @ApiTags('consumer')
@@ -29,8 +29,11 @@ export class ConsumerController {
    * Get consumer's calls
    */
   @Get(':id/my-calls')
-  getMyCalls(@Param('id') consumerId: string) {
-    return this.consumerService.getMyCalls(consumerId);
+  getMyCalls(
+    @Param('id') consumerId: string,
+    @Query('query') query: string,
+  ) {
+    return this.consumerService.getMyCalls(consumerId, query);
   }
 
   /**

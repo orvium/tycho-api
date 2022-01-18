@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import { Call, CallSchema } from 'src/entities/call.entity';
-import { Donor, DonorSchema } from 'src/entities/donor.entity';
+import { Call, CallSchema } from '../entities/call.entity';
+import { Donor, DonorSchema } from '../entities/donor.entity';
 import { DonorController } from './donor/donor.controller';
 import { DonorService } from './donor/donor.service';
 

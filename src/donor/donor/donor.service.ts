@@ -1,10 +1,10 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
-import { CreateDonorDto } from 'src/dtos/donor/create-donor.dto';
-import { UpdateDonorDto } from 'src/dtos/donor/update-donor.dto';
-import { Call } from 'src/entities/call.entity';
-import { CallDateInfo, Donor } from 'src/entities/donor.entity';
+import { FilterQuery, Model } from 'mongoose';
+import { CreateDonorDto } from '../../dtos/donor/create-donor.dto';
+import { UpdateDonorDto } from '../../dtos/donor/update-donor.dto';
+import { Call } from '../../entities/call.entity';
+import { CallDateInfo, Donor } from '../../entities/donor.entity';
 
 @Injectable()
 export class DonorService {
@@ -17,14 +17,21 @@ export class DonorService {
     return this.donorModel.find().exec();
   }
 
-  async getAllWithoutMe(donorId: string) {
+  async getAllWithoutMe(donorId: string, query?: string) {
     if (!donorId.match(/^[0-9a-fA-F]{24}$/)) return;
 
-    let calls = await this.callModel.find({
-      'donors': { $ne: donorId }
-    }).exec();
+    const filter: FilterQuery<Call> = {};
+    filter.$and = [{ donors: { $ne: donorId } }];
 
-    return calls;
+    if (query) {
+      filter.$or = [
+        { title: { $regex: query, $options: 'i' } },
+        { description: { $regex: query, $options: 'i' } },
+        { keywords: { $in: [ query ] } }
+      ];
+    }
+
+    return await this.callModel.find(filter).exec();
   }
 
   async getOne(id: string) {
@@ -37,20 +44,25 @@ export class DonorService {
     return donor;
   }
 
-  async getMyCalls(donorId: string) {
+  async getMyCalls(donorId: string, query?: string) {
     if (!donorId.match(/^[0-9a-fA-F]{24}$/)) return;
 
     const donor = await this.donorModel.findById({ _id: donorId }).exec();
 
-    let ids = donor.calls.map((callInfo: CallDateInfo) => callInfo.callId)
+    const ids = donor.calls.map((callInfo: CallDateInfo) => callInfo.callId)
 
-    let myCalls = await this.callModel
-      .find()
-      .where('_id')
-      .in(ids)
-      .exec();
+    const filter: FilterQuery<Call> = {};
+    filter.$and = [{ _id: { $in: ids } }];
 
-    return myCalls;
+    if (query) {
+      filter.$or = [
+        { title: { $regex: query, $options: 'i' } },
+        { description: { $regex: query, $options: 'i' } },
+        { keywords: { $in: [ query ] } }
+      ];
+    }
+
+    return await this.callModel.find(filter).exec();
   }
 
   create(createDonorDto: CreateDonorDto) {
